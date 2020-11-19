@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Shapes</string>
+    <string name="draw">Draw</string>
+    <string name="triangle">Triangle</string>
+    <string name="circle">Circle</string>
+    <string name="rect">Rect</string>
+    <string name="move">Move</string>
 
     <string-array name="colors">
         <item>000000</item>
