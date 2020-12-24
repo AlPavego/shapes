@@ -6,6 +6,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Triangle extends Figure {
     public Point a;
     public Point b;
@@ -30,5 +33,17 @@ public class Triangle extends Figure {
 
             canvas.drawPath(path, paint);
         }
+    }
+
+    @Override
+    JSONObject convertToJSON() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+
+        jsonObject.put("COLOR", color);
+        jsonObject.put("POINT_A", a);
+        jsonObject.put("POINT_B", b);
+        jsonObject.put("POINT_C", c);
+
+        return jsonObject;
     }
 }

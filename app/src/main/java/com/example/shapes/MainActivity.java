@@ -1,15 +1,22 @@
 package com.example.shapes;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class MainActivity extends AppCompatActivity {
+    final String FILENAME = "figuresJSON";
+
     RadioGroup shapes;
     Spinner colors;
     Scene scene;
@@ -27,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.rect: scene.setTypeShape("rect"); break;
-                    case R.id.circle: scene.setTypeShape("circle"); break;
-                    case R.id.triangle: scene.setTypeShape("triangle"); break;
+                    case R.id.rect: scene.setTypeShape(Scene.RECT); break;
+                    case R.id.circle: scene.setTypeShape(Scene.CIRCLE); break;
+                    case R.id.triangle: scene.setTypeShape(Scene.TRIANGLE); break;
                 }
             }
         });
@@ -46,5 +53,39 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("lifecycle", "onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("lifecycle", "onResume()");
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        JSONArray jsonArray = new JSONArray();
+        for (Figure figure: scene.getFigures()) {
+            try {
+                jsonArray.put(figure.convertToJSON());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            outState.putString(FILENAME, jsonArray.toString());
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String figuresJSONText = savedInstanceState.getString(FILENAME);
+
     }
 }

@@ -5,6 +5,7 @@
     <string name="circle">Circle</string>
     <string name="rect">Rect</string>
     <string name="move">Move</string>
+    <string name="undoButton">&#8634;</string>
 
     <string-array name="colors">
         <item>000000</item>

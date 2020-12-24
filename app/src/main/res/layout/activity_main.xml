@@ -6,73 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/draw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/draw" />
-
-        <RadioButton
-            android:id="@+id/move"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/move" />
-    </RadioGroup>
-
-    <com.example.shapes.Scene
-        android:id="@+id/scene"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"></com.example.shapes.Scene>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="25">
 
-    <RadioGroup
-        android:id="@+id/shapeGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/rect"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/rect" />
+            android:layout_height="match_parent"
+            android:layout_weight="23"
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/circle"
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/draw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/draw" />
+
+                <RadioButton
+                    android:id="@+id/move"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/move" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/shapeGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/rect" />
+
+                <RadioButton
+                    android:id="@+id/circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/circle" />
+
+                <RadioButton
+                    android:id="@+id/triangle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/triangle" />
+
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/colors"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:entries="@array/colors" />
+
+            <Button
+                android:id="@+id/undoButton"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="1dp"
+                android:autoSizeMaxTextSize="72pt"
+                android:autoSizeMinTextSize="16pt"
+                android:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:text="@string/undoButton" />
+
+        </LinearLayout>
+
+        <com.example.shapes.Scene
+            android:id="@+id/scene"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/circle" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"></com.example.shapes.Scene>
 
-        <RadioButton
-            android:id="@+id/triangle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/triangle" />
-    </RadioGroup>
-
-    <Spinner
-        android:id="@+id/colors"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:entries="@array/colors"
-        app:layout_constraintStart_toEndOf="@+id/shapeGroup"
-        app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

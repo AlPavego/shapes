@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class Scene extends View {
     ArrayList<Figure> figures = new ArrayList<Figure>();
+    ArrayList<Figure> reservedFigures = new ArrayList<Figure>();
     Paint paint = new Paint();
 
     Point[] points = new Point[3];
@@ -24,6 +25,9 @@ public class Scene extends View {
     int gridHeight;
     int countPoints;
 
+    public static final String RECT = "rect";
+    public static final String TRIANGLE = "triangle";
+    public static final String CIRCLE = "circle";
     String mode = "draw";
     String typeShape = "rect";
     String color = "#000000";
@@ -90,9 +94,9 @@ public class Scene extends View {
             countPoints += 1;
 
             switch (this.typeShape) {
-                case "rect": checkRectForCreating(); break;
-                case "circle": checkCircleForCreating(); break;
-                case "triangle": checkTriangleForCreating(); break;
+                case RECT: checkRectForCreating(); break;
+                case CIRCLE: checkCircleForCreating(); break;
+                case TRIANGLE: checkTriangleForCreating(); break;
             }
 
             invalidate();
@@ -137,5 +141,13 @@ public class Scene extends View {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public ArrayList<Figure> getFigures() {
+        return figures;
+    }
+
+    public void setFigures(ArrayList<Figure> figures) {
+        this.figures = figures;
     }
 }
