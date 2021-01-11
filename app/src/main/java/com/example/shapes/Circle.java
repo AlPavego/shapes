@@ -14,6 +14,7 @@ public class Circle extends Figure{
 
     Circle(Point point, String color, float radius){
         super(color);
+        this.type = "CIRCLE";
         this.point = point;
         this.radius = radius;
     }
@@ -29,8 +30,10 @@ public class Circle extends Figure{
     JSONObject convertToJSON() throws JSONException {
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("TYPE", type);
         jsonObject.put("COLOR", color);
-        jsonObject.put("POINT", point);
+        jsonObject.put("POINTX", point.x);
+        jsonObject.put("POINTY", point.y);
         jsonObject.put("RADIUS", radius);
 
         return jsonObject;

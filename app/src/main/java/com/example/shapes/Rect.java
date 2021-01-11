@@ -15,6 +15,7 @@ public class Rect extends Figure{
 
     Rect(Point point, String color, int width, int height){
         super(color);
+        this.type = "RECT";
         this.point = point;
         this.width = width;
         this.height = height;
@@ -31,8 +32,10 @@ public class Rect extends Figure{
     JSONObject convertToJSON() throws JSONException {
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("TYPE", type);
         jsonObject.put("COLOR", color);
-        jsonObject.put("POINT", point);
+        jsonObject.put("POINTX", point.x);
+        jsonObject.put("POINTY", point.y);
         jsonObject.put("WIDTH", width);
         jsonObject.put("HEIGHT", height);
 

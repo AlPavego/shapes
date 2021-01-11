@@ -147,7 +147,7 @@ public class Scene extends View {
         return figures;
     }
 
-    public void setFigures(ArrayList<Figure> figures) {
-        this.figures = figures;
+    public void addToFigures(Figure figure) {
+        this.figures.add(figure);
     }
 }

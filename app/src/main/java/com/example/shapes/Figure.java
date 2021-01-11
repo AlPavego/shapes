@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class Figure {
+    String type = "FIGURE";
     String color;
 
     Figure(String color){
@@ -19,6 +20,7 @@ public abstract class Figure {
     JSONObject convertToJSON() throws JSONException {
         JSONObject jsonObject = new JSONObject();
 
+        jsonObject.put("TYPE", type);
         jsonObject.put("COLOR", color);
         return jsonObject;
     }
